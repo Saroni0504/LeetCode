@@ -19,9 +19,9 @@ Input: nums = [3,3], target = 6
 Output: [0,1]
  
 '''
-class Solution:
+class Solution: 
     def twoSum(self, nums, target):
-        for i,num_i in enumerate(nums):
-            for j,num_j in enumerate(nums):
-                if num_i + num_j == target and i != j:
+        for i in range(0, len(nums)):
+            for j in range(0, len(nums)):
+                if nums[i] + nums[j] == target and i != j:
                     return [i,j]
