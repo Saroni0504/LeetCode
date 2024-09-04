@@ -19,9 +19,23 @@ Input: nums = [3,3], target = 6
 Output: [0,1]
  
 '''
-class Solution: 
+# Brute force O(n**2)
+class Solution:
     def twoSum(self, nums, target):
-        for i in range(0, len(nums)):
-            for j in range(0, len(nums)):
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
                 if nums[i] + nums[j] == target and i != j:
-                    return [i,j]
+                    return [min(i,j),max(i,j)]
+# O(n)
+class Solution:
+    def twoSum(self, nums, target):
+        sum_dict = {} # val: index
+        for i, n in enumerate(nums):
+            substract = target - n 
+            # if the value exists it means that we'll get to 0 when we will subtract it
+            # so we found our value
+            if substract in sum_dict:
+                return [sum_dict[substract], i]
+            else: 
+                sum_dict[n] = i 
+        
