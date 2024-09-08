@@ -14,14 +14,14 @@ class Solution(object):
             if ransom_arr[ord(c) - ord('a')] > magazine_arr[ord(c) - ord('a')]:
                 return False
         return True
-    #count occurances in a string of all alphabet letters 
+    # count occurances in a string of all alphabet letters 
     def count_occ(self,s):
         chars = [0]*26
         for c in s:
             chars[ord(c) - ord('a')] += 1
         return chars
 
-#Dictionary solution
+# Dictionary solution
 class Solution(object):
     def canConstruct(self, ransomNote, magazine):
         dictionary = {}
@@ -35,4 +35,10 @@ class Solution(object):
                 dictionary[char] -= 1
             else:
                 return False
+        return True
+# Even better solution 
+class Solution:
+    def canConstruct(self, ransomNote, magazine):
+        for letter in list(set(ransomNote)):
+            if ransomNote.count(letter) > magazine.count(letter): return False
         return True
